@@ -5,7 +5,13 @@
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  width: 100%;
+  height: 80vh;
+}
+
 header > div:nth-of-type(1) {
+  position: fixed;
   width: 100%;
   height: 25px;
   background-color: black;
@@ -18,6 +24,8 @@ header > div:nth-of-type(1) {
 }
 
 .searchBar {
+  position: fixed;
+  top: 25px;
   width: 100%;
   height: 50px;
   background-color: rgb(188, 188, 188);
@@ -39,7 +47,8 @@ header > div:nth-of-type(1) {
 
 .inputSearch {
   width: 300px;
-  height: 30px;
+  height: 40px;
+  /* height: 100%; */
   border: none;
   background-color: black;
   color: white;
@@ -56,7 +65,57 @@ header > div:nth-of-type(1) {
 }
 
 section {
+  margin-top: 30px;
   width: 100%;
-  height: 300px;
-  border: 1px solid red;
+  height: 100vh;
+  background-color: black;
+  /* border: 3px solid rgb(188, 188, 188); */
+  display: flex;
+  padding: 50px;
+  overflow: auto;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.product {
+  width: 300px;
+  height: 400px;
+  background-color: rgb(188, 188, 188);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 20px;
+}
+
+.product > img {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  margin-left: 30px;
+}
+
+.product > span {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  margin-top: 15px;
+  font-weight: 500;
+  font-style: italic;
+  width: fit-content;
+  background-color: white;
+}
+
+footer {
+  width: 100%;
+  height: 25px;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 300;
 }
