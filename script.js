@@ -15,6 +15,9 @@ displayData = (data) => {
     <div class="product">
       <img src="${data.products[i].thumbnail}" alt="">
       <span class="productTitle">${data.products[i].title}</span>
+      <span>${data.products[i].discountPercentage}% discount!</span>
+      <span>Category: ${data.products[i].category}</span>
+      <span>Available stock: ${data.products[i].stock} units</span>
     </div>
     `;
   }
