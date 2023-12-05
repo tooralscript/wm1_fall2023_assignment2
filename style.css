@@ -7,14 +7,39 @@
 
 body {
   width: 100%;
-  height: 80vh;
+  height: 100vh;
+}
+
+header {
+  background-color: blue;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 10%;
+}
+
+section {
+  position: fixed;
+  top: 10%;
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  height: 88%;
+  padding: 50px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(188, 188, 188);
+  color: black;
+  width: 100%;
+  height: 2%;
 }
 
 header > div:nth-of-type(1) {
-  top: 0;
-  position: fixed;
   width: 100%;
-  height: 25px;
+  /* height: 25px; */
+  height: 30%;
   background-color: black;
   color: white;
   display: flex;
@@ -24,11 +49,10 @@ header > div:nth-of-type(1) {
   font-weight: 300;
 }
 
-.searchBar {
-  position: fixed;
-  top: 25px;
+header > div:nth-of-type(2) {
   width: 100%;
-  height: 50px;
+  height: 70%;
+  /* height: 50px; */
   background-color: rgb(188, 188, 188);
   display: flex;
   align-items: center;
@@ -66,13 +90,8 @@ header > div:nth-of-type(1) {
 }
 
 section {
-  margin-top: 70px;
   width: 100%;
-  height: 100vh;
-  background-color: black;
-  /* border: 3px solid rgb(188, 188, 188); */
   display: flex;
-  padding: 50px;
   overflow: auto;
   flex-wrap: wrap;
   gap: 30px;
@@ -87,7 +106,6 @@ section {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  /* padding: 20px; */
   cursor: pointer;
 }
 
@@ -151,12 +169,164 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 25px;
-  background-color: black;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 500;
+}
+
+.errorMessage {
+  color: white;
+  font-size: 24px;
+}
+
+.loading {
+  color: white;
+  font-size: 24px;
+}
+
+.circles {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: auto;
+}
+.circles > * {
+  background-color: transparent;
+  box-sizing: border-box;
+  border: 5px solid rgb(188, 188, 188);
+  border-top: 0 solid transparent;
+  border-left: 0 solid transparent;
+  border-radius: 50%;
+  position: absolute;
+  animation: spin 4s infinite linear alternate;
+}
+
+.circle1 {
+  width: 300px;
+  height: 300px;
+  animation-delay: -5s;
+  border-color: rgb(188, 188, 188);
+}
+.circle2 {
+  width: 280px;
+  height: 280px;
+  top: 10px;
+  left: 10px;
+  animation-delay: -4.9s;
+  border-color: rgb(188, 188, 188);
+}
+.circle3 {
+  width: 260px;
+  height: 260px;
+  top: 20px;
+  left: 20px;
+  animation-delay: -4.8s;
+  border-color: rgb(188, 188, 188);
+}
+.circle4 {
+  width: 240px;
+  height: 240px;
+  top: 30px;
+  left: 30px;
+  animation-delay: -4.7s;
+  border-color: rgb(188, 188, 188);
+}
+.circle5 {
+  width: 220px;
+  height: 220px;
+  top: 40px;
+  left: 40px;
+  animation-delay: -4.6s;
+  border-color: rgb(188, 188, 188);
+}
+.circle6 {
+  width: 200px;
+  height: 200px;
+  top: 50px;
+  left: 50px;
+  animation-delay: -4.5s;
+  border-color: rrgb(188, 188, 188);
+}
+.circle7 {
+  width: 180px;
+  height: 180px;
+  top: 60px;
+  left: 60px;
+  animation-delay: -4.4s;
+  border-color: rgb(188, 188, 188);
+}
+.circle8 {
+  width: 160px;
+  height: 160px;
+  top: 70px;
+  left: 70px;
+  animation-delay: -4.3s;
+  border-color: rrgb(188, 188, 188);
+}
+.circle9 {
+  width: 140px;
+  height: 140px;
+  top: 80px;
+  left: 80px;
+  animation-delay: -4.2s;
+  border-color: rgb(188, 188, 188);
+}
+.circle10 {
+  width: 120px;
+  height: 120px;
+  top: 90px;
+  left: 90px;
+  animation-delay: -4.1s;
+  border-color: rrgb(188, 188, 188);
+}
+.circle11 {
+  width: 100px;
+  height: 100px;
+  top: 100px;
+  left: 100px;
+  animation-delay: -4s;
+  border-color: rgb(188, 188, 188);
+}
+.circle12 {
+  width: 80px;
+  height: 80px;
+  top: 110px;
+  left: 110px;
+  animation-delay: -3.9s;
+  border-color: rrgb(188, 188, 188);
+}
+.circle13 {
+  width: 60px;
+  height: 60px;
+  top: 120px;
+  left: 120px;
+  animation-delay: -3.8s;
+  border-color: rgb(188, 188, 188);
+}
+.circle14 {
+  width: 40px;
+  height: 40px;
+  top: 130px;
+  left: 130px;
+  animation-delay: -3.7s;
+  border-color: rrgb(188, 188, 188);
+}
+.circle15 {
+  width: 20px;
+  height: 20px;
+  top: 140px;
+  left: 140px;
+  animation-delay: -3.6s;
+  border-color: rgb(188, 188, 188);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
