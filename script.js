@@ -42,7 +42,7 @@ productsSection.addEventListener("click", (e) => {
   if (target) {
     console.log(target.id);
     productsSection.style.display = "none";
-    individualProductSection.style.display = "block";
+    individualProductSection.style.display = "flex";
     individualProductSection.innerHTML += `
     <div class="productIndividual" >
       <div>
@@ -93,7 +93,7 @@ displayData = (products) => {
   for (let i = 0; i < products.length; i++) {
     productsSection.innerHTML += `
     <div id="${i}" class="product" >
-      <img src="${products[i].thumbnail}" alt="">
+      <img src="${products[i].thumbnail}" alt="did not load from api">
       <span class="productTitle">${products[i].title} - ${products[i].price}$</span>
       <span>${products[i].discountPercentage}% discount!</span>
       <span>Category: ${products[i].category}</span>
