@@ -7,7 +7,26 @@ let dataLoading = document.querySelector(".circles");
 let searchBar = document.querySelector(".inputSearch");
 let searchText;
 let currentProduct = document.querySelector(".product");
+let inputSelect = document.querySelector("#selectFilter");
+let selectRes;
 
+//filtering the data based on select option
+inputSelect.addEventListener("change", (e) => {
+  filteredProducts = [];
+  selectRes = e.target.value;
+
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].category == selectRes) {
+      filteredProducts.push(products[i]);
+    } else {
+      continue;
+    }
+  }
+
+  displayData(filteredProducts);
+});
+
+//opening an individual product page, when clicked on it
 individualProductSection.addEventListener("click", (e) => {
   const button = e.target.closest(".bckMain");
   if (button) {
@@ -17,6 +36,7 @@ individualProductSection.addEventListener("click", (e) => {
   }
 });
 
+// adding on click event to each product is possible this way, because they are not rendered yet when the DOM is loaded
 productsSection.addEventListener("click", (e) => {
   const target = e.target.closest(".product");
   if (target) {
@@ -67,7 +87,7 @@ fetch("https://dummyjson.com/products?limit=100")
   })
   .catch((err) => displayError());
 
-//Displaying the data on the page
+// Displaying the data on the page
 displayData = (products) => {
   productsSection.innerHTML = "";
   for (let i = 0; i < products.length; i++) {
@@ -91,6 +111,7 @@ displayError = () => {
   }, 3000);
 };
 
+// Taking all the information of each individual product, and building one long string, which will be needed for search operation
 prepareDescriptions = () => {
   for (let i = 0; i < products.length; i++) {
     productsDescription[i] = products[i].title.concat(
@@ -104,6 +125,7 @@ prepareDescriptions = () => {
   }
 };
 
+// Checking for the needed input within the product descriptions, when user enters anything in the search field
 searchBar.addEventListener("keyup", (e) => {
   filteredProducts = [];
   searchText = e.target.value;
