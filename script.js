@@ -1,37 +1,119 @@
-let products = {};
-let productsSection = document.querySelector("section");
+let products = [];
+let filteredProducts = [];
+let productsDescription = [];
+let productsSection = document.querySelector(".section1");
+let individualProductSection = document.querySelector(".section2");
 let dataLoading = document.querySelector(".circles");
+let searchBar = document.querySelector(".inputSearch");
+let searchText;
+let currentProduct = document.querySelector(".product");
 
+individualProductSection.addEventListener("click", (e) => {
+  const button = e.target.closest(".bckMain");
+  if (button) {
+    individualProductSection.innerHTML = "";
+    productsSection.style.display = "flex";
+    individualProductSection.style.display = "none";
+  }
+});
+
+productsSection.addEventListener("click", (e) => {
+  const target = e.target.closest(".product");
+  if (target) {
+    console.log(target.id);
+    productsSection.style.display = "none";
+    individualProductSection.style.display = "block";
+    individualProductSection.innerHTML += `
+    <div class="productIndividual" >
+      <div>
+      <img src="${products[target.id].images[0]}" alt="HappyFace">
+      <img src="${products[target.id].images[1]}" alt="HappyFace" >
+      <img src="${products[target.id].images[2]}" alt="HappyFace" >
+      <img src="${products[target.id].images[3]}" alt="HappyFace" >
+      </div>
+      <div>
+      <span class="productTitle">Title - ${products[target.id].title}</span>
+      <span>Price - ${products[target.id].price}$</span>
+      <span>Discount rate - ${products[target.id].discountPercentage}%!</span>
+      <span>Category: ${products[target.id].category}</span>
+      <span>Available stock: ${products[target.id].stock} units</span>
+      <span>Description: ${products[target.id].description}</span>
+      <button class="bckMain">Back to main page</button>
+      </div>
+      
+      
+    </div>
+    `;
+  } else {
+    console.log("not product");
+  }
+});
+
+//Loading screen
 setTimeout(() => {
   dataLoading.style.display = "none";
-}, 4000);
+}, 3000);
 
-fetch("https://dummyjson.com/products")
+// Fetching the data from API
+fetch("https://dummyjson.com/products?limit=100")
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
+    products = data.products;
+    console.log("All the products - ", products);
+    prepareDescriptions();
     setTimeout(() => {
-      displayData(data);
-    }, 4000);
+      displayData(products);
+    }, 3000);
   })
-  .catch((error) => console.log(error));
+  .catch((err) => displayError());
 
-displayData = (data) => {
-  for (let i = 0; i < data.limit; i++) {
-    console.log("for ishe dushdu");
+//Displaying the data on the page
+displayData = (products) => {
+  productsSection.innerHTML = "";
+  for (let i = 0; i < products.length; i++) {
     productsSection.innerHTML += `
-    <div class="product" >
-      <img src="${data.products[i].thumbnail}" alt="">
-      <span class="productTitle">${data.products[i].title}</span>
-      <span>${data.products[i].discountPercentage}% discount!</span>
-      <span>Category: ${data.products[i].category}</span>
-      <span>Available stock: ${data.products[i].stock} units</span>
+    <div id="${i}" class="product" >
+      <img src="${products[i].thumbnail}" alt="">
+      <span class="productTitle">${products[i].title} - ${products[i].price}$</span>
+      <span>${products[i].discountPercentage}% discount!</span>
+      <span>Category: ${products[i].category}</span>
+      <span>Available stock: ${products[i].stock} units</span>
     </div>
     `;
   }
 };
 
+// Displaying error page in case something went wrong
 displayError = () => {
-  dataLoading.style.display = "none";
-  productsSection.innerHTML += `<span class="errorMessage">Sorry, something went wrong...</span>`;
+  setTimeout(() => {
+    dataLoading.style.display = "none";
+    productsSection.innerHTML += `<span class="errorMessage">Sorry, something went wrong...</span>`;
+  }, 3000);
 };
+
+prepareDescriptions = () => {
+  for (let i = 0; i < products.length; i++) {
+    productsDescription[i] = products[i].title.concat(
+      products[i].description,
+      products[i].price,
+      products[i].discountPercentage,
+      products[i].stock,
+      products[i].brand,
+      products[i].category
+    );
+  }
+};
+
+searchBar.addEventListener("keyup", (e) => {
+  filteredProducts = [];
+  searchText = e.target.value;
+
+  for (let i = 0; i < productsDescription.length; i++) {
+    if (
+      productsDescription[i].toLowerCase().includes(searchText.toLowerCase())
+    ) {
+      filteredProducts.push(products[i]);
+    }
+  }
+  displayData(filteredProducts);
+});

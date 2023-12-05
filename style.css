@@ -81,15 +81,15 @@ header > div:nth-of-type(2) {
   border-radius: 4px;
 }
 
-.inputSearch:focus-visible {
-  outline: none;
-}
-
 .inputSearch::placeholder {
   color: rgb(188, 188, 188);
 }
 
-section {
+.inputSearch:focus-visible {
+  outline: none;
+}
+
+.section1 {
   width: 100%;
   display: flex;
   overflow: auto;
@@ -97,6 +97,53 @@ section {
   gap: 30px;
   justify-content: center;
   align-items: center;
+}
+
+.productIndividual {
+  width: 100%;
+  height: 400px;
+  display: flex;
+}
+
+.productIndividual > div:nth-of-type(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 40%;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid rgb(188, 188, 188);
+}
+
+.productIndividual > div:nth-of-type(1) > img {
+  width: 200px;
+  height: 170px;
+  border-radius: 10px;
+}
+
+.productIndividual > div:nth-of-type(2) {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 20px;
+  font-weight: 500;
+  width: 60%;
+  height: 100%;
+  color: white;
+}
+
+.productIndividual > div:nth-of-type(2) > button {
+  width: 30%;
+  height: 40px;
+  border: none;
+  font-style: oblique;
+  font-size: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 30px;
 }
 
 .product {
@@ -163,6 +210,10 @@ section {
   color: white;
   padding: 8px;
   border-radius: 20px;
+}
+
+.section2 {
+  display: none;
 }
 
 footer {
@@ -320,6 +371,17 @@ footer {
   left: 140px;
   animation-delay: -3.6s;
   border-color: rgb(188, 188, 188);
+}
+
+.showBtn {
+  background-color: rgb(188, 188, 188);
+  border-radius: 20px;
+  border: none;
+  width: 120px;
+  height: 70px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 @keyframes spin {
